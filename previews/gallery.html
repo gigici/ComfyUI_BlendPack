@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlendPack Preview Gallery</title>
+    <style>
+        :root {
+            --bg-color: #1a1a1a;
+            --card-bg: #262626;
+            --text-color: #e5e5e5;
+            --accent-color: #3b82f6;
+            --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        h1 {
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            border: 1px solid #333;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent-color);
+        }
+
+        .video-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            /* Set aspect ratio to avoid layout shift */
+            background: #000;
+            position: relative;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .label {
+            padding: 15px;
+            font-size: 0.9em;
+            text-transform: capitalize;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .variant-name {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .engine-name {
+            font-size: 0.8em;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Loading Spinner placeholder */
+        .video-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            border: 2px solid #333;
+            border-top-color: #666;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes spin {
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        /* Category Filter Styles */
+        .filters {
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            background: #333;
+            border: none;
+            color: #aaa;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9em;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .video-container.loaded::before {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>BlendPack Gallery</h1>
+        <div class="subtitle">113 Shader Variants</div>
+    </header>
+
+    <div id="filters" class="filters">
+        <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
+        <!-- Filters will be populated by JS -->
+    </div>
+
+    <div class="gallery-grid">
+
+        <div class="card" data-engine="Blur">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="blur_directional.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Directional</span>
+                <span class="engine-name">Blur</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Blur">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="blur_dreamy.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Dreamy</span>
+                <span class="engine-name">Blur</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Blur">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="blur_gaussian.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Gaussian</span>
+                <span class="engine-name">Blur</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Blur">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="blur_motion.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Motion</span>
+                <span class="engine-name">Blur</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Blur">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="blur_radial.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Radial</span>
+                <span class="engine-name">Blur</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Blur">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="blur_swirl.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Swirl</span>
+                <span class="engine-name">Blur</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Blur">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="blur_tilt.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Tilt</span>
+                <span class="engine-name">Blur</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Blur">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="blur_zoom.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Zoom</span>
+                <span class="engine-name">Blur</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Crossfade">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="crossfade.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Standard</span>
+                <span class="engine-name">Crossfade</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Dissolve">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="dissolve_bokeh.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Bokeh</span>
+                <span class="engine-name">Dissolve</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Dissolve">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="dissolve_cellular.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Cellular</span>
+                <span class="engine-name">Dissolve</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Dissolve">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="dissolve_edge_swell.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Edge Swell</span>
+                <span class="engine-name">Dissolve</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Dissolve">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="dissolve_filmgrain.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Filmgrain</span>
+                <span class="engine-name">Dissolve</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Dissolve">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="dissolve_fractal.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Fractal</span>
+                <span class="engine-name">Dissolve</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Dissolve">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="dissolve_ink.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Ink</span>
+                <span class="engine-name">Dissolve</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Dissolve">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="dissolve_powder.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Powder</span>
+                <span class="engine-name">Dissolve</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Dissolve">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="dissolve_ribbon.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Ribbon</span>
+                <span class="engine-name">Dissolve</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Glitch">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="glitch_block_drift_soft.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Block Drift Soft</span>
+                <span class="engine-name">Glitch</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Glitch">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="glitch_compression_shimmer.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Compression Shimmer</span>
+                <span class="engine-name">Glitch</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Glitch">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="glitch_interlace_flicker.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Interlace Flicker</span>
+                <span class="engine-name">Glitch</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Glitch">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="glitch_line_tear_subtle.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Line Tear Subtle</span>
+                <span class="engine-name">Glitch</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Glitch">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="glitch_noise_bands.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Noise Bands</span>
+                <span class="engine-name">Glitch</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Glitch">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="glitch_scan_jitter_micro.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Scan Jitter Micro</span>
+                <span class="engine-name">Glitch</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Glitch">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="glitch_smear_blocks_clean.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Smear Blocks Clean</span>
+                <span class="engine-name">Glitch</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Glitch">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="glitch_sync_offset.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Sync Offset</span>
+                <span class="engine-name">Glitch</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Light">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="light_exposure_roll.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Exposure Roll</span>
+                <span class="engine-name">Light</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Light">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="light_flare_hint.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Flare Hint</span>
+                <span class="engine-name">Light</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Light">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="light_glow_veil.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Glow Veil</span>
+                <span class="engine-name">Light</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Light">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="light_gradient_bloom.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Gradient Bloom</span>
+                <span class="engine-name">Light</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Light">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="light_halation_melt.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Halation Melt</span>
+                <span class="engine-name">Light</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Light">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="light_hard_leak.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Hard Leak</span>
+                <span class="engine-name">Light</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Light">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="light_highlight_carry.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Highlight Carry</span>
+                <span class="engine-name">Light</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Light">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="light_soft_leak.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Soft Leak</span>
+                <span class="engine-name">Light</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Morph">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="morph_bulge.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Bulge</span>
+                <span class="engine-name">Morph</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Morph">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="morph_liquify.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Liquify</span>
+                <span class="engine-name">Morph</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Morph">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="morph_pinch.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Pinch</span>
+                <span class="engine-name">Morph</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Morph">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="morph_ripple.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Ripple</span>
+                <span class="engine-name">Morph</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Morph">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="morph_smooth.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Smooth</span>
+                <span class="engine-name">Morph</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Morph">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="morph_twist.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Twist</span>
+                <span class="engine-name">Morph</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Morph">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="morph_warp.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Warp</span>
+                <span class="engine-name">Morph</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Morph">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="morph_wave.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Wave</span>
+                <span class="engine-name">Morph</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Other">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="other_aurora.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Aurora</span>
+                <span class="engine-name">Other</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Other">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="other_crystal_refraction.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Crystal Refraction</span>
+                <span class="engine-name">Other</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Other">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="other_digital_corruption.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Digital Corruption</span>
+                <span class="engine-name">Other</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Other">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="other_firefly_dance.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Firefly Dance</span>
+                <span class="engine-name">Other</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Other">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="other_glass_shatter.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Glass Shatter</span>
+                <span class="engine-name">Other</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Other">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="other_ink_in_water.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Ink In Water</span>
+                <span class="engine-name">Other</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Other">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="other_kaleidoscope.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Kaleidoscope</span>
+                <span class="engine-name">Other</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Other">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="other_liquid_metal.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Liquid Metal</span>
+                <span class="engine-name">Other</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Other">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="other_neon_dreams.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Neon Dreams</span>
+                <span class="engine-name">Other</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Other">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="other_paint_splatter.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Paint Splatter</span>
+                <span class="engine-name">Other</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Other">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="other_quantum_tunnel.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Quantum Tunnel</span>
+                <span class="engine-name">Other</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Other">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="other_temporal_echo.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Temporal Echo</span>
+                <span class="engine-name">Other</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Pixelate">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="pixelate_8bit.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">8Bit</span>
+                <span class="engine-name">Pixelate</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Pixelate">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="pixelate_block.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Block</span>
+                <span class="engine-name">Pixelate</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Pixelate">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="pixelate_dither.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Dither</span>
+                <span class="engine-name">Pixelate</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Pixelate">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="pixelate_glitch.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Glitch</span>
+                <span class="engine-name">Pixelate</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Pixelate">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="pixelate_mosaic.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Mosaic</span>
+                <span class="engine-name">Pixelate</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Pixelate">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="pixelate_quantize.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Quantize</span>
+                <span class="engine-name">Pixelate</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Pixelate">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="pixelate_retro.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Retro</span>
+                <span class="engine-name">Pixelate</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Pixelate">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="pixelate_scan.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Scan</span>
+                <span class="engine-name">Pixelate</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Prism">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="prism_aberration_mid_only.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Aberration Mid Only</span>
+                <span class="engine-name">Prism</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Prism">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="prism_chroma_pulse.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Chroma Pulse</span>
+                <span class="engine-name">Prism</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Prism">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="prism_dual_prism.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Dual Prism</span>
+                <span class="engine-name">Prism</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Prism">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="prism_rainbow_micro.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Rainbow Micro</span>
+                <span class="engine-name">Prism</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Prism">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="prism_rgb_split_thin.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Rgb Split Thin</span>
+                <span class="engine-name">Prism</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Prism">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="prism_rgb_split_wide.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Rgb Split Wide</span>
+                <span class="engine-name">Prism</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Prism">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="prism_scatter.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Scatter</span>
+                <span class="engine-name">Prism</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Prism">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="prism_spectral_smear.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Spectral Smear</span>
+                <span class="engine-name">Prism</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Refraction">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="refraction_caustic_hint.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Caustic Hint</span>
+                <span class="engine-name">Refraction</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Refraction">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="refraction_center_refract.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Center Refract</span>
+                <span class="engine-name">Refraction</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Refraction">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="refraction_edge_refract.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Edge Refract</span>
+                <span class="engine-name">Refraction</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Refraction">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="refraction_glass_ripple.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Glass Ripple</span>
+                <span class="engine-name">Refraction</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Refraction">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="refraction_heat_haze.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Heat Haze</span>
+                <span class="engine-name">Refraction</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Refraction">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="refraction_micro_lens.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Micro Lens</span>
+                <span class="engine-name">Refraction</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Refraction">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="refraction_prism_micro.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Prism Micro</span>
+                <span class="engine-name">Refraction</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Refraction">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="refraction_watery_wobble.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Watery Wobble</span>
+                <span class="engine-name">Refraction</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Rotate">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="rotate_3d.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">3D</span>
+                <span class="engine-name">Rotate</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Rotate">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="rotate_ccw.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Ccw</span>
+                <span class="engine-name">Rotate</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Rotate">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="rotate_cw.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Cw</span>
+                <span class="engine-name">Rotate</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Rotate">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="rotate_flip.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Flip</span>
+                <span class="engine-name">Rotate</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Rotate">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="rotate_orbit.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Orbit</span>
+                <span class="engine-name">Rotate</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Rotate">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="rotate_spin.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Spin</span>
+                <span class="engine-name">Rotate</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Rotate">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="rotate_swirl.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Swirl</span>
+                <span class="engine-name">Rotate</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Rotate">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="rotate_tumble.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Tumble</span>
+                <span class="engine-name">Rotate</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Shutter">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="shutter_directional_smear.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Directional Smear</span>
+                <span class="engine-name">Shutter</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Shutter">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="shutter_easing_snap.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Easing Snap</span>
+                <span class="engine-name">Shutter</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Shutter">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="shutter_frame_echo.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Frame Echo</span>
+                <span class="engine-name">Shutter</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Shutter">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="shutter_micro_parallax_fake.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Micro Parallax Fake</span>
+                <span class="engine-name">Shutter</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Shutter">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="shutter_micro_zoom_push.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Micro Zoom Push</span>
+                <span class="engine-name">Shutter</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Shutter">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="shutter_strobe_soft.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Strobe Soft</span>
+                <span class="engine-name">Shutter</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Shutter">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="shutter_time_ghost.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Time Ghost</span>
+                <span class="engine-name">Shutter</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Shutter">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="shutter_velocity_blur_fake.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Velocity Blur Fake</span>
+                <span class="engine-name">Shutter</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Wipe">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="wipe_barn_door.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Barn Door</span>
+                <span class="engine-name">Wipe</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Wipe">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="wipe_clock.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Clock</span>
+                <span class="engine-name">Wipe</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Wipe">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="wipe_diagonal_lr.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Diagonal Lr</span>
+                <span class="engine-name">Wipe</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Wipe">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="wipe_diagonal_rl.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Diagonal Rl</span>
+                <span class="engine-name">Wipe</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Wipe">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="wipe_down.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Down</span>
+                <span class="engine-name">Wipe</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Wipe">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="wipe_iris.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Iris</span>
+                <span class="engine-name">Wipe</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Wipe">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="wipe_left.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Left</span>
+                <span class="engine-name">Wipe</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Wipe">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="wipe_radial_center.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Radial Center</span>
+                <span class="engine-name">Wipe</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Wipe">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="wipe_radial_edge.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Radial Edge</span>
+                <span class="engine-name">Wipe</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Wipe">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="wipe_right.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Right</span>
+                <span class="engine-name">Wipe</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Wipe">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="wipe_spiral.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Spiral</span>
+                <span class="engine-name">Wipe</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Wipe">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="wipe_up.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Up</span>
+                <span class="engine-name">Wipe</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Zoom">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="zoom_blur.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Blur</span>
+                <span class="engine-name">Zoom</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Zoom">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="zoom_in.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">In</span>
+                <span class="engine-name">Zoom</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Zoom">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="zoom_out.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Out</span>
+                <span class="engine-name">Zoom</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Zoom">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="zoom_pull.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Pull</span>
+                <span class="engine-name">Zoom</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Zoom">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="zoom_push.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Push</span>
+                <span class="engine-name">Zoom</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Zoom">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="zoom_rotate.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Rotate</span>
+                <span class="engine-name">Zoom</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Zoom">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="zoom_swirl.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Swirl</span>
+                <span class="engine-name">Zoom</span>
+            </div>
+        </div>
+
+        <div class="card" data-engine="Zoom">
+            <div class="video-container">
+                <video loop muted playsinline preload="auto" poster="" class="preview-video">
+                    <source src="zoom_warp.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="label">
+                <span class="variant-name">Warp</span>
+                <span class="engine-name">Zoom</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Use a Map to track play promises for each video element
+        const playPromises = new Map();
+
+        async function safePlay(video) {
+            try {
+                const promise = video.play();
+                if (promise !== undefined) {
+                    playPromises.set(video, promise);
+                    await promise;
+                }
+            } catch (error) {
+                // Ignore AbortError which happens if pause() is called while play() is pending
+                if (error.name !== 'AbortError') {
+                    console.error("Video play failed:", error);
+                }
+            }
+        }
+
+        function safePause(video) {
+            const promise = playPromises.get(video);
+            if (promise !== undefined) {
+                // If play is still pending, wait for it then pause
+                promise.then(() => {
+                    video.pause();
+                    video.currentTime = 0; // Reset to start
+                }).catch(() => {
+                    // Ignore errors if play failed/aborted
+                });
+            } else {
+                video.pause();
+                video.currentTime = 0;
+            }
+        }
+
+
+        // Attach event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const video = card.querySelector('video');
+                if (video) {
+                    // Hide spinner when video is ready
+                    video.addEventListener('canplay', () => {
+                        card.querySelector('.video-container').classList.add('loaded');
+                    });
+
+                    // Also check if already ready (cached)
+                    if (video.readyState >= 3) {
+                        card.querySelector('.video-container').classList.add('loaded');
+                    }
+
+                    card.addEventListener('mouseenter', () => safePlay(video));
+                    card.addEventListener('mouseleave', () => safePause(video));
+                }
+            });
+        });
+
+
+        // Filter Logic
+        const engines = ['Blur', 'Crossfade', 'Dissolve', 'Glitch', 'Light', 'Morph', 'Other', 'Pixelate', 'Prism', 'Refraction', 'Rotate', 'Shutter', 'Wipe', 'Zoom'];
+        const filterContainer = document.getElementById('filters');
+
+        engines.forEach(engine => {
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn';
+            btn.textContent = engine;
+            btn.onclick = () => filterGallery(engine, btn);
+            filterContainer.appendChild(btn);
+        });
+
+        function filterGallery(engine, btnElement) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            if (btnElement) btnElement.classList.add('active');
+
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const cardEngine = card.getAttribute('data-engine');
+                if (engine === 'all' || cardEngine === engine) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
